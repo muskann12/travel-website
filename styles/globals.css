@@ -1,27 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Body background gradient */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-gradient-to-r from-gray-100 to-gray-300;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Custom component for nav-links */
+.nav-links {
+  @apply relative text-black font-bold cursor-pointer text-[15px] w-fit uppercase;
+}
+
+.nav-links::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: rgb(38, 38, 38);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-links:hover::after {
+  transform: scaleX(1);
+}
+
+/* Custom styles for mobile links */
+.nav-link-mobile {
+  @apply relative mb-[2rem] text-black font-bold cursor-pointer text-[25px] w-fit uppercase;
+}
+
+.nav-link-mobile::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: rgb(38, 38, 38);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link-mobile:hover::after {
+  transform: scaleX(1);
+}
+
+.heading {
+  @apply text-center text-gray-900 text-[22px] sm:text-[30px] md:text-[38px] font-bold capitalize
+}
+
+.destination_h1 {
+  @apply text-black mt-[1rem] text-[20px] text-center font-semibold
+}
+
+.destination_p {
+  @apply text-black text-[17px] text-center opacity-70 font-semibold
+
+}
+
+.footer_heading {
+  @apply text-black mb-[1.5rem] text-[20px] font-bold
+}
+
+
+.footer__link {
+  @apply block mb-[1rem] text-black text-[16px] hover:text-blue-500 transition-all duration-100 w-fit
+}
+
+.footer__icon {
+  @apply w-[2.3rem] h-[2.3rem] flex cursor-pointer items-center justify-center rounded-full hover:opacity-60 transition-all duration-300
 }
